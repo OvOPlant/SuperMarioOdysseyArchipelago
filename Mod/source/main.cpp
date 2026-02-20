@@ -860,6 +860,7 @@ void stageInitHook(al::ActorInitInfo *info, StageScene *curScene, al::PlacementI
     // Enable Cappy on load into Cap Intro
     if (worldId == 0 && worldScenario < 2 && !GameDataFunction::isEnableCap(accessor))
     {
+		__asm("MOVZ W0, #0"); // Skips the laying down anim, stopping a softlock on new game (Anim is called: DemoOpeningDown)
         GameDataFunction::enableCap(accessor);
     }
 
